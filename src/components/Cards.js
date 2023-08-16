@@ -30,12 +30,14 @@ function Cards() {
           src={arrowLeft}
           className="arrowLeft"
           onClick={() => handleArrowClick('left')}
+          alt='card'
         />
-        <img src={cards[currentCardIndex]} className="card" />
+        <img src={cards[currentCardIndex]} className="card" alt='card'/>
         <img
           src={arrowRight}
           className="arrowRight"
           onClick={() => handleArrowClick('right')}
+          alt='new-card'
         />
       </div>
     </div>

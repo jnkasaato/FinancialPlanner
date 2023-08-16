@@ -191,6 +191,10 @@ h4{
   width: 70%;
 }
 
+.limit-change-box button{
+  margin-left: 10px;
+}
+
 .balance__graph-base {
   background-color: var(--clr-dark-grey) ; 
   height: 10px;
@@ -237,6 +241,9 @@ h4{
 
 .balance__expense-key{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .balance__total-Income h3{
@@ -246,6 +253,16 @@ h4{
 .balance__total-expenses h3{
   color: var(--clr-orange)  
 }
+
+.circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px 0 20px;
+}
+
+
 
 /* --------------------------------------------------------------------------------------------- */
 
@@ -358,6 +375,7 @@ h4{
   font-weight: bold;
   margin-bottom: 10px;
 }
+.limit-change-box input,
 .transactions_add-row1 option,
 .transactions_add-row1 select,
 .transactions_add-row2 input,

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 function Balance({sampleTransactions, transactions}) {
   // Calculate the total sum of expenses
@@ -54,28 +54,60 @@ function Balance({sampleTransactions, transactions}) {
     savingsPercent = (totalSavings / totalExpenses) * 100;
   }
 
-    // Calculate the spending limit and the percent of money spent
-  const spendingLimit = 20000; // Set your spending limit here
-  const percentSpent = (totalExpenses / spendingLimit) * 100;
-
+  
   const graphBaseRef = useRef(null);
   useEffect(() => {
     const bottomPosition = graphBaseRef.current.getBoundingClientRect().bottom;
     console.log('Bottom Coordinate:', bottomPosition);
   }, []);
 
+  //Change spending limit
+ const [spendingLimit, setSpendingLimit] = useState(20000); // Set your default spending limit here
+  const percentSpent = (totalExpenses / spendingLimit) * 100;
+
+  // ... (other code)
+
+  const [showLimitChangeBox, setShowLimitChangeBox] = useState(false);
+  const [newSpendingLimit, setNewSpendingLimit] = useState(spendingLimit);
+
+  const handleLimitChange = () => {
+    setShowLimitChangeBox(true);
+  };
+
+  const handleLimitInputChange = (e) => {
+    setNewSpendingLimit(Number(e.target.value));
+  };
+
+  const handleLimitSubmit = () => {
+    setSpendingLimit(newSpendingLimit); // Update the spending limit with the new value
+    setShowLimitChangeBox(false);
+  };
+
+
   return (
     <div className="balance">  
-      <div className="balance__header">  
+      <div className="split-header balance__header">
         <h1>Balance</h1>
+        {!showLimitChangeBox ? (
+          <button onClick={handleLimitChange}><h2>Change Limit</h2></button>
+        ) : (
+          <div className="limit-change-box">
+            <input
+              type="number"
+              value={newSpendingLimit}
+              onChange={handleLimitInputChange}
+            />
+            <button onClick={handleLimitSubmit}><h2>Update</h2></button>
+          </div>
+        )}
       </div>
       <div className="balance__row">
         <div className="balance__box-small">
-        <div className="balance__total-Income">
-          <h2>Total Income</h2>
-          <h3>${totalIncome}</h3>
-          <h4>On track with your goal</h4>
-        </div>
+          <div className="balance__total-Income">
+            <h2>Total Income</h2>
+            <h3>${totalIncome}</h3>
+            <h4>On track with your goal</h4>
+          </div>
         </div>
         <div className="balance__box-big">
           <div className="balance__spending-limit">
@@ -113,12 +145,14 @@ function Balance({sampleTransactions, transactions}) {
               <div className="expense-graph optional" style={{ top: '-50px', left: `${essentialPercent}%`, width: `${optionalPercent}%` }}></div>
               <div className="expense-graph savings" style={{ top: '-90px' , left: `${essentialPercent + optionalPercent}%`, width: `${savingsPercent}%` }}></div>
             </div>
-            <div className="balance__expense-key">
-              <h4><span> Essentials</span></h4>
-              <h4><span> Optional</span></h4>
-              <h4><span> Savings</span></h4>
-
-            </div>
+              <div className="balance__expense-key">
+                <div className="circle essential"></div>
+                <h4><span>Essentials</span></h4>
+                <div className="circle optional"></div>
+                <h4><span>Optional</span></h4>
+                <div className="circle savings"></div>
+                <h4><span>Savings</span></h4>
+              </div>
           </div>
         </div>
       </div>

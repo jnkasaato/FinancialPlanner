@@ -1,5 +1,3 @@
-//automate transactions
-
 //add expenses 
 const daysAgo = 226;
 
