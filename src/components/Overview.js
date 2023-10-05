@@ -53,7 +53,7 @@ function Overview({ sampleTransactions, transactions }) {
 
     const months = [
       'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August'
+      'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
     const IncomeData = months.map((month, index) => groupedData[index]?.Income || 0);
@@ -68,13 +68,13 @@ function Overview({ sampleTransactions, transactions }) {
               label: 'Income',
               data: IncomeData,
               backgroundColor: '#4bbad8',
-              barThickness: 29,
+              barThickness: 25,
             },
             {
               label: 'Expenses',
               data: expenseData,
               backgroundColor: '#e6813d',
-              barThickness: 29,
+              barThickness: 25,
             },
           ],
         },
@@ -84,11 +84,17 @@ function Overview({ sampleTransactions, transactions }) {
               display: false, 
             },
             ticks: {
-              ticks:{ color: '#00ff00', beginAtZero: true },
+
+              ticks:{ 
+                color: '#00ff00', 
+                beginAtZero: true,
+
+              },
               font: {
                 family: 'Quicksand',
                 size: 16, 
                 weight: 'bold', 
+
 
               },
             },
@@ -138,14 +144,10 @@ return (
       <div className="split-header header ">
         <h1>Overview</h1>
         <div className="overview__chart-controls">
-          <button onClick={() => setTimePeriod('1month')}><h2>2 Months</h2></button>
-          <button onClick={() => setTimePeriod('3months')}><h2>3 Months</h2></button>
-          <button onClick={() => setTimePeriod('6months')}><h2>6 Months</h2></button>
-          <button onClick={() => setTimePeriod('yeartodate')}><h2>Year to Date</h2></button>
         </div>
       </div>
 
-      <div className="overview__chart-container" style={{ height: '350px' }}>
+      <div className="overview__chart-container" >
         <canvas ref={chartRef} />
       </div>
     </div>

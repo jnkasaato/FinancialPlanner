@@ -122,7 +122,14 @@ h4{
 .box-big{
   width: 70%;
   margin-left: 20px;
-  
+}
+
+.bottom-big{
+  width:60%;
+}
+
+.bottom-small{
+  width:40%;
 }
 
 .box-small:hover,
@@ -164,7 +171,6 @@ h4{
 .header{
   border-bottom: 2px solid var(--clr-dark-grey);
 }
-
 
 .balance__row {
   border-top: 2px solid var(--clr-dark-grey);
@@ -384,7 +390,7 @@ h4{
   border: none;
   border-radius:5px;
   height: 20px;
-  width: 150px;
+  width: 230px;
   padding: 2px 10px;
   color: var(--clr-white);
   font-family: Quicksand;
@@ -451,12 +457,15 @@ h4{
 /* --------------------------------------------------------------------------------------------- */
 
 /* --overview-- */
+.overview{
 
+}
 .overview__chart-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px; 
+  height: 85%;
+  
 }
 
 .overview__chart-controls button{

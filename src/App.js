@@ -36,14 +36,14 @@ function App() {
       </div>
 
       <div className="row">
-        <div className="box-big">
+        <div className="box-big bottom-big">
           <div className="box-overview">
             <Overview 
               sampleTransactions={sampleTransactions} 
               transactions={transactions} />
           </div>
         </div>
-        <div className="box-small">
+        <div className="box-small bottom-small">
           <div className="box-transactions">
             <Transactions sampleTransactions={sampleTransactions} onUpdateTransactions={updateTransactions} />
           </div>

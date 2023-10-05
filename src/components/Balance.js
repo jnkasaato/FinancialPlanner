@@ -1,24 +1,37 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-function Balance({sampleTransactions, transactions}) {
-  // Calculate the total sum of expenses
-  var totalExpenses = transactions
-    .filter(transaction => transaction.type === 'expense')
+function Balance({ sampleTransactions, transactions }) {
+  // Add state variables for the date range
+  const currentDate = new Date();
+  const last30DaysDate = new Date();
+  last30DaysDate.setDate(currentDate.getDate() - 30);
+
+  // Filter transactions based on the last 30 days
+  const filteredTransactions = transactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date); // Assuming your transaction object has a 'date' property.
+    return transactionDate >= last30DaysDate && transactionDate <= currentDate;
+  });
+
+  // Calculate the total sum of expenses for the last 30 days
+  var totalExpenses = filteredTransactions
+    .filter((transaction) => transaction.type === 'expense')
     .reduce((total, transaction) => total + transaction.amount, 0);
 
-  var totalIncome = transactions
-    .filter(transaction => transaction.type ==='Income')
+  // Calculate the total income for the last 30 days
+  var totalIncome = filteredTransactions
+    .filter((transaction) => transaction.type === 'Income')
     .reduce((total, transaction) => total + transaction.amount, 0);
+
 //essential, optional saving
-  var totalEssential = transactions
+  var totalEssential = filteredTransactions
     .filter(transaction => transaction.necessity ==='Essential')
     .reduce((total, transaction) => total + transaction.amount, 0);
 
-  var totalOptional = transactions
+  var totalOptional = filteredTransactions
     .filter(transaction => transaction.necessity ==='Optional')
     .reduce((total, transaction) => total + transaction.amount, 0);
 
-  var totalSavings = transactions
+  var totalSavings = filteredTransactions
     .filter(transaction => transaction.necessity ==='Savings')
     .reduce((total, transaction) => total + transaction.amount, 0);
 
@@ -62,10 +75,8 @@ function Balance({sampleTransactions, transactions}) {
   }, []);
 
   //Change spending limit
- const [spendingLimit, setSpendingLimit] = useState(20000); // Set your default spending limit here
+ const [spendingLimit, setSpendingLimit] = useState(5200); 
   const percentSpent = (totalExpenses / spendingLimit) * 100;
-
-  // ... (other code)
 
   const [showLimitChangeBox, setShowLimitChangeBox] = useState(false);
   const [newSpendingLimit, setNewSpendingLimit] = useState(spendingLimit);
@@ -79,7 +90,7 @@ function Balance({sampleTransactions, transactions}) {
   };
 
   const handleLimitSubmit = () => {
-    setSpendingLimit(newSpendingLimit); // Update the spending limit with the new value
+    setSpendingLimit(newSpendingLimit); 
     setShowLimitChangeBox(false);
   };
 
@@ -104,9 +115,9 @@ function Balance({sampleTransactions, transactions}) {
       <div className="balance__row">
         <div className="balance__box-small">
           <div className="balance__total-Income">
-            <h2>Total Income</h2>
+            <h2>Monthly Income</h2>
             <h3>${totalIncome}</h3>
-            <h4>On track with your goal</h4>
+            <h4>Last 30 days</h4>
           </div>
         </div>
         <div className="balance__box-big">
@@ -126,10 +137,10 @@ function Balance({sampleTransactions, transactions}) {
       <div className="balance__row">
         <div className="balance__box-small">
           <div className="balance__total-expenses">
-            <h2>Total Expenses</h2>
+            <h2>Monthly Expenses</h2>
             <h3>${totalExpenses.toFixed(0)}</h3>
             {percentSpent < 100 ? 
-              (<h4> within your set limit</h4>
+              (<h4> You're within your set limit</h4>
             ) : (
               <h4>A bit over your set limit</h4>) 
             }

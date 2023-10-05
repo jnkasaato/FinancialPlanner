@@ -1,5 +1,5 @@
 //add expenses 
-const daysAgo = 226;
+const daysAgo = 365;
 
 const getRandomDate = (daysAgo) => {
   const today = new Date();
@@ -21,7 +21,7 @@ const necessityLevels = ['Essential', 'Optional', 'Savings'];
 for (let i = 0; i < 300; i++) {
   const category = categories[Math.floor(Math.random() * categories.length)];
   const necessity = necessityLevels[Math.floor(Math.random() * necessityLevels.length)];
-  const amount = getRandomAmount(10, 100);
+  const amount = getRandomAmount(10, 300);
   const description = `${category}`;
   const date = getRandomDate(daysAgo);
   const type = 'expense';
@@ -37,13 +37,13 @@ for (let i = 0; i < 300; i++) {
 }
 
 //add income
-for (let i = 0; i < 90; i++) {
+for (let i = 0; i < 150; i++) {
   const type = 'Income';
   const category = 'Income';
   const description = 'Income';
   const necessity = '';
   const date = getRandomDate(daysAgo);
-  const amount = getRandomAmount(300, 500);
+  const amount = getRandomAmount(300, 600);
 
   unorderedTransactions.push({
     type,
