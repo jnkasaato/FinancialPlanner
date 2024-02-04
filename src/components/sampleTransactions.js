@@ -9,19 +9,30 @@ const getRandomDate = (daysAgo) => {
   return date;
 };
 
+<<<<<<< HEAD
+const getRandomAmount = (min, max) => {  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const unorderedTransactions = [];
+=======
 const getRandomAmount = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 const unorderedTransactions = [];
 
+>>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
 const categories = ['Groceries', 'Dinner' , 'Takeout','Shopping', 'Entertainment', 'Bills', 'Savings', 'Gas Station', 'Donations', 'Home Maintenance', 'Subscriptions', 'Health/Fitness', 'Pet Care', 'Gift'];
 const necessityLevels = ['Essential', 'Optional', 'Savings'];
 
 for (let i = 0; i < 300; i++) {
   const category = categories[Math.floor(Math.random() * categories.length)];
   const necessity = necessityLevels[Math.floor(Math.random() * necessityLevels.length)];
+<<<<<<< HEAD
+  const amount = getRandomAmount(10, 500);
+=======
   const amount = getRandomAmount(10, 300);
+>>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
   const description = `${category}`;
   const date = getRandomDate(daysAgo);
   const type = 'expense';
@@ -36,8 +47,12 @@ for (let i = 0; i < 300; i++) {
   });
 }
 
+<<<<<<< HEAD
+for (let i = 0; i < 250; i++) {
+=======
 //add income
 for (let i = 0; i < 150; i++) {
+>>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
   const type = 'Income';
   const category = 'Income';
   const description = 'Income';
