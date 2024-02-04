@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useRef, useEffect, useState } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
 import card1 from '../images/card1.png';
 import card2 from '../images/card2.png';
 import card3 from '../images/card3.png';
@@ -10,7 +6,6 @@ import card4 from '../images/card4.png';
 import arrowLeft from '../images/arrow-left.png';
 import arrowRight from '../images/arrow-right.png';
 
-<<<<<<< HEAD
 function Cards({ transactions })  {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const cards = [card1, card2, card3, card4];
@@ -51,38 +46,12 @@ function Cards({ transactions })  {
         <img src={cards[currentCardIndex]} className="card" alt='card'/>
       </div>
       <div className="cards__arrows">
-=======
-function Cards() {
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const cards = [card1, card2, card3, card4]; // Replace card2 and card3 with your image paths
-
-  const handleArrowClick = (direction) => {
-    if (direction === 'left') {
-      setCurrentCardIndex((prevIndex) =>
-        (prevIndex + cards.length - 1) % cards.length
-      );
-    } else if (direction === 'right') {
-      setCurrentCardIndex((prevIndex) => (prevIndex + 1) % cards.length);
-    }
-  };
-
-  return (
-    <div className="cards">
-      <div className="header">
-        <h1>Cards</h1>
-      </div>
-      <div className="cards__display-cards">
->>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
         <img
           src={arrowLeft}
           className="arrowLeft"
           onClick={() => handleArrowClick('left')}
           alt='card'
         />
-<<<<<<< HEAD
-=======
-        <img src={cards[currentCardIndex]} className="card" alt='card'/>
->>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
         <img
           src={arrowRight}
           className="arrowRight"
@@ -90,7 +59,6 @@ function Cards() {
           alt='new-card'
         />
       </div>
-<<<<<<< HEAD
       <div className="cards__summary">
         <div>
           <h4>Total Cash Balance</h4>
@@ -115,10 +83,3 @@ function Cards() {
 }
 
 export default Cards;
-=======
-    </div>
-  );
-}
-
-export default Cards;
->>>>>>> 8c49e84882e7b9a860ae8aa1440793b9ce41406b
